@@ -61,7 +61,31 @@ function characterLooper(low, high) {
 }
 // debugger;
 
+var generatePassword = function() {
+  
+  acceptCharacterAmount = parseInt(acceptCharacterAmount);
+  
+  var acceptCharacterAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
 
+  if (!acceptCharacterAmount) {
+      alert("You need to provide a valid answer, please try again!")
+      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
+    } 
+    if (acceptCharacterAmount < 8 || acceptCharacterAmount > 128) {
+      alert("You need to provide a valid answer, please try again!");
+      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
+    } 
+    if (acceptCharacterAmount) {
+      acceptUppercase = confirm("Would you like to add Uppercase characters?");
+      acceptLowercase = confirm("would you like to add Lowercase characters?");
+      acceptNumeric = confirm("Would you like to add Numbers?");
+      acceptSpecialChar = confirm("Would you like to add Special characters?");
+    } 
+    if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
+      alert("You must choose at least one criteria!");
+   } 
+};
+  
 
   
 // Get references to the #generate element
