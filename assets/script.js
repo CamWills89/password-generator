@@ -29,8 +29,65 @@
 // need to us math.floor and math.random to randomize the selection characters.
 // And finally I need to make sure that the password is displayed in the generator's text area.
 
-var characterAmount = "";
-var 
+//variables declaration of character length, uppercase, lowercase, numeric and special characters values.
+var acceptCharacterAmount = "";
+var acceptUppercase;
+var acceptLowercase;
+var acceptNumeric;
+var acceptSpecialChar;
+
+var uppercase = characterLooper(65, 90);
+console.log(uppercase);
+
+var lowercase = characterLooper(97, 122);
+console.log(lowercase);
+
+var numbers = characterLooper(48, 57);
+console.log(numbers);
+
+//There are more special characters, but they don't line up sequentially?
+//I could add them like this var specialCharacters = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"]; 
+//but then I dont use my fancy function?
+var specialCharacters = characterLooper(33, 47) + characterLooper(58, 64) + characterLooper(91, 96) + characterLooper(123, 126);
+console.log(specialCharacters);
+
+//this will loop through an array of each variable from low to high of the ASCII code characters.
+function characterLooper(low, high) {
+  var characterLoop = [];
+  for(let i = low; i <= high; i++){
+    characterLoop.push(i);
+  }
+  return characterLoop;
+}
+// debugger;
+
+var generatePassword = function() {
+  
+  acceptCharacterAmount = parseInt(acceptCharacterAmount);
+  
+  var acceptCharacterAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
+
+  if (!acceptCharacterAmount) {
+      alert("You need to provide a valid answer, please try again!")
+      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
+    } 
+    if (acceptCharacterAmount < 8 || acceptCharacterAmount > 128) {
+      alert("You need to provide a valid answer, please try again!");
+      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
+    } 
+    if (acceptCharacterAmount) {
+      acceptUppercase = confirm("Would you like to add Uppercase characters?");
+      acceptLowercase = confirm("would you like to add Lowercase characters?");
+      acceptNumeric = confirm("Would you like to add Numbers?");
+      acceptSpecialChar = confirm("Would you like to add Special characters?");
+    } 
+    if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
+      alert("You must choose at least one criteria!");
+   } 
+};
+  
+
+  
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -45,3 +102,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// writePassword();
