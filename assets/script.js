@@ -43,7 +43,7 @@ var generatePassword = function () {
   selectCharAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
   //validate user input, forcing them to select valid input
   while (!selectCharAmount || selectCharAmount < 8 || selectCharAmount > 128) {
-    alert("You need to provide a valid answer, please try again!")
+    alert("You need to provide a valid answer, please try again!");
     selectCharAmount = parseInt(prompt("Please select between 8 and 128."));
   };
   //prompt user to select character types they want included.
@@ -55,7 +55,7 @@ var generatePassword = function () {
   };
   //validating input, making sure that they choose at least 1 character type
   if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
-    alert("You must choose at least one character type! Please try again.");
+    selection = alert("You must choose at least one character type! Please try again.");
   }
   // for all 4 options selected
   else if (acceptUppercase && acceptLowercase && acceptNumeric && acceptSpecialChar) {
