@@ -10,7 +10,7 @@ This is a random password generator that allows you to select the length of char
 
 ### Technologies
 * Javascript
-* HTMl/CSS
+* HTML/CSS
 
 ### Screenshot
 
