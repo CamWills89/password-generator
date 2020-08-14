@@ -1,4 +1,4 @@
-# Cameron Wills Professional Portfolio
+# Random Password Generator
 ## Table of contents
 * Introduction
 * Technologies
