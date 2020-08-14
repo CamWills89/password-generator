@@ -61,7 +61,53 @@ var generatePassword = function () {
   else if (acceptUppercase && acceptLowercase && acceptNumeric && acceptSpecialChar) {
     selection = uppercase.concat(lowercase, specialCharacters, numbers)
   }
- 
+  //for 3 out of 4 options selected
+  else if (acceptUppercase && acceptLowercase && acceptNumeric) {
+    selection = uppercase.concat(lowercase, numbers)
+  }
+  else if (acceptUppercase && acceptLowercase && specialCharacters) {
+    selection = uppercase.concat(lowercase, specialCharacters)
+  }
+  else if (acceptUppercase && acceptNumeric && specialCharacters) {
+    selection = uppercase.concat(numbers, specialCharacters)
+  }
+  else if (acceptLowercase && acceptNumeric && specialCharacters) {
+    selection = lowercase.concat(numbers, specialCharacters)
+  }
+  //for 2 out of 4 options selected
+  else if (acceptUppercase && acceptLowercase) {
+    selection = uppercase.concat(lowercase)
+  }
+  else if (acceptUppercase && specialCharacters) {
+    selection = uppercase.concat(specialCharacters)
+  }
+  else if (acceptUppercase && acceptNumeric) {
+    selection = uppercase.concat(numbers)
+  }
+  else if (acceptLowercase && acceptNumeric) {
+    selection = lowercase.concat(numbers)
+  }
+  else if (acceptLowercase && specialCharacters) {
+    selection = lowercase.concat(specialCharacters)
+  }
+  else if (acceptNumeric && specialCharacters) {
+    selection = numbers.concat(specialCharacters)
+  }
+  //for 1 out of 4 options selected
+  else if (acceptUppercase) {
+    selection = uppercase
+  }
+  else if (acceptLowercase) {
+    selection = lowercase
+  }
+  else if (specialCharacters) {
+    selection = specialCharacters
+  }
+  else if (acceptNumeric) {
+    selection = numbers
+  };
+
+
 };
 
 
