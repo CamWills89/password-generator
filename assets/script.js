@@ -107,7 +107,15 @@ var generatePassword = function () {
     selection = numbers
   };
 
-
+  //declaring array as placeholder for generated password based on selected character length
+  var passwordGen = []
+  //randomizing selection and converting ASCII character codes to string.
+  for (let i = 0; i < selectCharAmount; i++) {
+    var characterCode = selection[Math.floor(Math.random() * selection.length)]
+    passwordGen.push(String.fromCharCode(characterCode))
+  }
+  //joining randomised values into string
+  return passwordGen.join('')
 };
 
 
