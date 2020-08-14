@@ -1,7 +1,6 @@
 //PsuedoCode
 // create variables that will house the prompts.
-// I need to input variables that hold the amount of characters, uppercase, lowercase, numeric and special characters data.
-//Also, I need to make sure that the generate password button intiates the window prompts.
+// I need to store arrays that hold the amount of characters, uppercase, lowercase, numeric and special characters data.
 
 // Create a function that will prompt the user to select the variables created.
 // Also I need to make sure that these prompt only select specified values.
@@ -12,6 +11,7 @@
 
 // need to us math.floor and math.random to randomize the selection characters.
 // And finally I need to make sure that the password is displayed in the generator's text area.
+
 
 //variables declaration of character length, uppercase, lowercase, numeric and special characters values.
 var selectCharAmount;
@@ -25,7 +25,13 @@ var uppercase = characterLooper(65, 90);
 var lowercase = characterLooper(97, 122);
 var numbers = characterLooper(48, 57);
 //concatenating all the special characters together, becasue their order is not sequential
-var specialCharacters = characterLooper(33, 47).concat(characterLooper(58, 64)).concat(characterLooper(91, 96)).concat(characterLooper(123, 126));
+var specialCharacters = characterLooper(33, 47).concat(
+  characterLooper(58, 64)
+).concat(
+  characterLooper(91, 96)
+).concat(
+  characterLooper(123, 126)
+);
 
 //this will loop through an array of each variable from low to high of the ASCII code characters.
 function characterLooper(low, high) {
@@ -36,8 +42,8 @@ function characterLooper(low, high) {
   return characterLoop;
 }
 
+//control flow for selection of characters and lenght to generate password
 var generatePassword = function () {
-  selectCharAmount = parseInt(selectCharAmount);
 
   //prompt user to input a valid amount of character length
   selectCharAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
@@ -48,63 +54,68 @@ var generatePassword = function () {
   };
   //prompt user to select character types they want included.
   if (selectCharAmount) {
+    //uppercase prompt
     acceptUppercase = confirm("Would you like to add Uppercase characters?");
+    //lowercase prompt
     acceptLowercase = confirm("would you like to add Lowercase characters?");
+    //numeric prompt
     acceptNumeric = confirm("Would you like to add Numbers?");
+    //special character prompt
     acceptSpecialChar = confirm("Would you like to add Special characters?");
   };
   //validating input, making sure that they choose at least 1 character type
   if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
+    //needed to store the selections even though they were falsy values
     selection = alert("You must choose at least one character type! Please try again.");
   }
   // for all 4 options selected
   else if (acceptUppercase && acceptLowercase && acceptNumeric && acceptSpecialChar) {
-    selection = uppercase.concat(lowercase, specialCharacters, numbers)
+    selection = uppercase.concat(lowercase, specialCharacters, numbers);
   }
   //for 3 out of 4 options selected
   else if (acceptUppercase && acceptLowercase && acceptNumeric) {
-    selection = uppercase.concat(lowercase, numbers)
+    selection = uppercase.concat(lowercase, numbers);
   }
   else if (acceptUppercase && acceptLowercase && specialCharacters) {
-    selection = uppercase.concat(lowercase, specialCharacters)
+    selection = uppercase.concat(lowercase, specialCharacters);
   }
   else if (acceptUppercase && acceptNumeric && specialCharacters) {
-    selection = uppercase.concat(numbers, specialCharacters)
+    selection = uppercase.concat(numbers, specialCharacters);
   }
   else if (acceptLowercase && acceptNumeric && specialCharacters) {
-    selection = lowercase.concat(numbers, specialCharacters)
+    selection = lowercase.concat(numbers, specialCharacters);
   }
   //for 2 out of 4 options selected
   else if (acceptUppercase && acceptLowercase) {
-    selection = uppercase.concat(lowercase)
+    selection = uppercase.concat(lowercase);
   }
   else if (acceptUppercase && specialCharacters) {
-    selection = uppercase.concat(specialCharacters)
+    selection = uppercase.concat(specialCharacters);
   }
   else if (acceptUppercase && acceptNumeric) {
-    selection = uppercase.concat(numbers)
+    selection = uppercase.concat(numbers);
   }
   else if (acceptLowercase && acceptNumeric) {
-    selection = lowercase.concat(numbers)
+    selection = lowercase.concat(numbers);
   }
   else if (acceptLowercase && specialCharacters) {
-    selection = lowercase.concat(specialCharacters)
+    selection = lowercase.concat(specialCharacters);
   }
   else if (acceptNumeric && specialCharacters) {
-    selection = numbers.concat(specialCharacters)
+    selection = numbers.concat(specialCharacters);
   }
   //for 1 out of 4 options selected
   else if (acceptUppercase) {
-    selection = uppercase
+    selection = uppercase;
   }
   else if (acceptLowercase) {
-    selection = lowercase
+    selection = lowercase;
   }
   else if (specialCharacters) {
-    selection = specialCharacters
+    selection = specialCharacters;
   }
   else if (acceptNumeric) {
-    selection = numbers
+    selection = numbers;
   };
 
   //declaring array as placeholder for generated password based on selected character length
@@ -112,10 +123,10 @@ var generatePassword = function () {
   //randomizing selection and converting ASCII character codes to string.
   for (let i = 0; i < selectCharAmount; i++) {
     var characterCode = selection[Math.floor(Math.random() * selection.length)]
-    passwordGen.push(String.fromCharCode(characterCode))
+    passwordGen.push(String.fromCharCode(characterCode));
   }
   //joining randomised values into string
-  return passwordGen.join('')
+  return passwordGen.join('');
 };
 
 
