@@ -1,18 +1,3 @@
-//PsuedoCode
-// create variables that will house the prompts.
-// I need to store arrays that hold the amount of characters, uppercase, lowercase, numeric and special characters data.
-
-// Create a function that will prompt the user to select the variables created.
-// Also I need to make sure that these prompt only select specified values.
-// make sure that character length prompt accepts numbers as valid input with parseInt().
-
-// the generate password function needs to be able to loop through all of the possible selection outcomes. It should loop
-// if all outcomes are true, if 3 outcomes are true, 2 outcomes are true or 1 outcome is true.
-
-// need to us math.floor and math.random to randomize the selection characters.
-// And finally I need to make sure that the password is displayed in the generator's text area.
-
-
 //variables declaration of character length, uppercase, lowercase, numeric and special characters values.
 var selectCharAmount;
 var acceptUppercase;
