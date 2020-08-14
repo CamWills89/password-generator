@@ -30,64 +30,55 @@
 // And finally I need to make sure that the password is displayed in the generator's text area.
 
 //variables declaration of character length, uppercase, lowercase, numeric and special characters values.
-var acceptCharacterAmount = "";
+var selectCharAmount;
 var acceptUppercase;
 var acceptLowercase;
 var acceptNumeric;
 var acceptSpecialChar;
 
+//looping through the arrays using ASCII character codes
 var uppercase = characterLooper(65, 90);
-console.log(uppercase);
-
 var lowercase = characterLooper(97, 122);
-console.log(lowercase);
-
 var numbers = characterLooper(48, 57);
-console.log(numbers);
-
-//There are more special characters, but they don't line up sequentially?
-//I could add them like this var specialCharacters = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"]; 
-//but then I dont use my fancy function?
-var specialCharacters = characterLooper(33, 47) + characterLooper(58, 64) + characterLooper(91, 96) + characterLooper(123, 126);
-console.log(specialCharacters);
+//concatenating all the special characters together, becasue their order is not sequential
+var specialCharacters = characterLooper(33, 47).concat(characterLooper(58, 64)).concat(characterLooper(91, 96)).concat(characterLooper(123, 126));
 
 //this will loop through an array of each variable from low to high of the ASCII code characters.
 function characterLooper(low, high) {
   var characterLoop = [];
-  for(let i = low; i <= high; i++){
+  for (let i = low; i <= high; i++) {
     characterLoop.push(i);
   }
   return characterLoop;
 }
-// debugger;
 
-var generatePassword = function() {
-  
-  acceptCharacterAmount = parseInt(acceptCharacterAmount);
-  
-  var acceptCharacterAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
+var generatePassword = function (selectCharAmount, acceptUppercase, acceptLowercase, acceptNumeric, acceptSpecialChar) {
+  selectCharAmount = parseInt(selectCharAmount);
 
-  if (!acceptCharacterAmount) {
-      alert("You need to provide a valid answer, please try again!")
-      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
-    } 
-    if (acceptCharacterAmount < 8 || acceptCharacterAmount > 128) {
-      alert("You need to provide a valid answer, please try again!");
-      var acceptCharacterAmount = parseInt(prompt("Please select between 8 and 128."));
-    } 
-    if (acceptCharacterAmount) {
-      acceptUppercase = confirm("Would you like to add Uppercase characters?");
-      acceptLowercase = confirm("would you like to add Lowercase characters?");
-      acceptNumeric = confirm("Would you like to add Numbers?");
-      acceptSpecialChar = confirm("Would you like to add Special characters?");
-    } 
-    if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
-      alert("You must choose at least one criteria!");
-   } 
+  //prompt user to input a valid amount of character length
+  selectCharAmount = parseInt(prompt("How long would you like your password to be? Please select between 8 and 128."));
+  //validate user input, forcing them to select valid input
+  while (!selectCharAmount || selectCharAmount < 8 || selectCharAmount > 128) {
+    alert("You need to provide a valid answer, please try again!")
+    selectCharAmount = parseInt(prompt("Please select between 8 and 128."));
+  }
+  //prompt user to select character types they want included.
+  if (selectCharAmount) {
+    acceptUppercase = confirm("Would you like to add Uppercase characters?");
+    acceptLowercase = confirm("would you like to add Lowercase characters?");
+    acceptNumeric = confirm("Would you like to add Numbers?");
+    acceptSpecialChar = confirm("Would you like to add Special characters?");
+  }
+  //validating input, making sure that they choose at least 1 character type
+  if (!acceptUppercase && !acceptLowercase && !acceptNumeric && !acceptSpecialChar) {
+    selection = alert("You must choose at least one character type! Please try again.");
+  }
+
+  var selection = selectCharAmount
 };
-  
 
-  
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
